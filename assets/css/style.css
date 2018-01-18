@@ -1,0 +1,89 @@
+* {
+
+	box-sizing: border-box;
+}
+
+body {
+
+	width: 1050px;
+	height: 100%;
+}
+
+/*otherHalf styling */
+
+
+#otherHalf {
+	background: url('../images/background.png');
+	padding-bottom:200px;
+	width:100%;
+	color: black;
+	border:1px ridge #d4d3dd;
+	padding-bottom:200px;
+	margin-bottom:10px;
+}
+
+/* button Styling*/
+
+.dessert-button{
+	background-color: rgba(212, 211, 221, .7);
+	margin:10px;
+	color:white;
+	border-radius:10%;
+	font-size:16px;
+	border:3px solid #70e1f5;
+	outline: none;
+
+}
+
+.dessert-button:hover {
+	cursor:pointer;
+	color:#70e1f5;
+	border-style:dotted;
+}
+
+
+/*=============================================================*/
+
+/* Input form*/
+
+#inputForm {
+	
+	margin-top:40px;
+	margin-right: auto;
+	margin-bottom:40px;
+	margin-left: 360px;
+
+}
+
+#add-dessert {
+	outline:none;
+	background-color:none;
+	border-radius:3;
+	border:2px solid #70e1f5;
+	margin-top:10px;
+	margin-left:80px;
+	font-size:16px;
+	color: rgba(212, 211, 221, 1);
+}
+
+#add-dessert:hover{
+	cursor:pointer;
+	color:#70e1f5;
+	border-style:dotted;
+}
+
+
+/*=============================================================*/
+
+/*half styling*/
+
+#half {
+	background: url('../images/background.png');
+	color: black;
+	background: linear-gradient(-90deg, #efefbb, #d4d3dd);
+	padding-bottom:100%;
+	margin-bottom:10px;
+}
+
+
+
