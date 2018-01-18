@@ -14,11 +14,11 @@ body {
 
 #otherHalf {
 	background: url('../images/background.png');
-	padding-bottom:200px;
+	padding-bottom:50px;
+	padding-top:30px;
 	width:100%;
 	color: black;
 	border:1px ridge #d4d3dd;
-	padding-bottom:200px;
 	margin-bottom:10px;
 }
 
@@ -26,7 +26,8 @@ body {
 
 .dessert-button{
 	background-color: rgba(212, 211, 221, .7);
-	margin:10px;
+	margin-top:10px;
+	margin-left:40px;
 	color:white;
 	border-radius:10%;
 	font-size:16px;
@@ -83,6 +84,23 @@ body {
 	background: linear-gradient(-90deg, #efefbb, #d4d3dd);
 	padding-bottom:100%;
 	margin-bottom:10px;
+}
+
+/*<img> styling*/
+
+.gif-image {
+	margin-top:20px;
+	margin-left: 230px;
+
+}
+
+.gif-image:hover {
+	cursor:pointer;
+}
+
+p {
+	margin-top:5px;
+	margin-left:230px;
 }
 
 

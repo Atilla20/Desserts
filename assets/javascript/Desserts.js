@@ -22,6 +22,20 @@ function renderButtons() {
 
 renderButtons();
 
+
+    $("#add-dessert").on("click", function(event) {
+      event.preventDefault();
+
+      // This line grabs the input from the textbox
+      var addDessert = $("#input").val().trim();
+
+      // Adding movie from the textbox to our array
+      topics.push(addDessert);
+
+    // Calling renderButtons which handles the processing of our movie array
+      renderButtons();
+});
+
 //$(".button").on("click", function() {
 
   // Adding a click event listener to all elements with a class of ".dessert-button"
@@ -64,25 +78,50 @@ function displayDessert() {
 
       p.text("Rating:" + result[i].rating);
 
+
+    var originalStill = result[i].images.original_still.url;
+    var original = result[i].images.original.url;
+
     // Creating an element to hold the image
-    var dessertImage = $("<img>");
+    var dessertImage= $("<img>");
 
+    dessertImage.addClass("gif-image");
+   // Retrieving the URL for the image
+    dessertImage.attr("src", originalStill);
 
-    // Retrieving the URL for the image
-    dessertImage.attr("src", result[i].images.original_still.url);
-
-	// Appending the image
+	 // Appending the image
     dessertDiv.append(dessertImage);
 
     dessertDiv.append(p);
 
     // Adding the images to the html
     $("#gifs-appear-here").prepend(dessertDiv);
-  }
-});
-}
+
+    $(".gif-image").on("click", function() {
+    
+      var state = $(".gif-image").attr("data-state");
+
+      if(state === "still") {
+
+        dessertImage.attr("src", original);
+        dessertImage.attr("data-state", "animate");
+
+    }
+
+      else {
+
+        dessertImage.attr("src", originalStill);
+        dessertImage.attr("data-state", "still");
+
+    };
+     });
+
+   };
+  })
+};
 
 
+ 
 
 
 				
