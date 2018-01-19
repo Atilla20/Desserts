@@ -2,7 +2,7 @@
 
 var topics = ["cookie","icecream", "brownie", "cake", "cupcake", "chocolate", "lollipop", "popsicle", "pie"];//dessert topic
 
-//
+//Making the topics buttons here
 
 function renderButtons() {
   $("#otherHalf").empty(); //this empties this area so there is not any repeat buttons
@@ -22,6 +22,10 @@ function renderButtons() {
 
 renderButtons();
 
+//================================================================================================
+
+// This area adds the user Input
+
 
     $("#add-dessert").on("click", function(event) {
       event.preventDefault();
@@ -34,7 +38,11 @@ renderButtons();
 
     // Calling renderButtons which handles the processing of our movie array
       renderButtons();
+
+      $("#input").val("");
 });
+
+//================================================================================================
 
 //$(".button").on("click", function() {
 
@@ -45,9 +53,11 @@ $(document).on("click", ".dessert-button", displayDessert);
 
 
 function displayDessert() {
+
+   $("#gifs-appear-here").empty(); // This empties the gifs and then displays the gifs from the button you click on
   
-  var url = new Object();
-  url.q = $(this).attr("data-dessert");
+  var url = new Object(); //  This is creating the url using $.param method. Let's me make the q element dynamic. 
+  url.q = $(this).attr("data-dessert"); // dynamic
   url.api_key = "iNJbaljOyqxMSaDefWOGNmFPksNoSeuu";
   url.rating;
   url.limit = 10;
@@ -69,56 +79,64 @@ function displayDessert() {
 
     var result = response.data;
 
-    for (var i = 0; i < result.length; i++) {
+    for(var i = 0; i < result.length; i++) {
 
   	var dessertDiv = $("<div>");// hold desserts in this div
-
-  	var p = $("<p>");
+    var p = $("<p>");
       // Set the inner text of the paragraph to the rating of the image in results[i].
-
-      p.text("Rating:" + result[i].rating);
-
+    p.text("Rating:" + result[i].rating);
 
     var originalStill = result[i].images.original_still.url;
     var original = result[i].images.original.url;
 
     // Creating an element to hold the image
     var dessertImage= $("<img>");
-
+    //Adding a class to each img
     dessertImage.addClass("gif-image");
-   // Retrieving the URL for the image
+   // Adding attributes to the <img>, that will help with animating the image 
     dessertImage.attr("src", originalStill);
+    dessertImage.attr("data-state", "still");
+    dessertImage.attr("data-still", originalStill);// still gif
+    dessertImage.attr("data-gif", original); //animated gif
 
 	 // Appending the image
     dessertDiv.append(dessertImage);
 
     dessertDiv.append(p);
 
-    // Adding the images to the html
+     // Adding the images to the html
     $("#gifs-appear-here").prepend(dessertDiv);
 
-    $(".gif-image").on("click", function() {
-    
-      var state = $(".gif-image").attr("data-state");
-
-      if(state === "still") {
-
-        dessertImage.attr("src", original);
-        dessertImage.attr("data-state", "animate");
-
-    }
-
-      else {
-
-        dessertImage.attr("src", originalStill);
-        dessertImage.attr("data-state", "still");
-
     };
-     });
+//================================================================================================
+//End of for loop, and beginning of the event listener for clicking on the images to make them animate
+    $(".gif-image").on("click", function() {
 
-   };
-  })
-};
+      var state = $(this).attr("data-state");
+
+        if(state === "still") { // so if state is still then it will animate
+
+            var animate = $(this).attr("data-gif");
+              $(this).attr("src", animate);
+              $(this).attr("data-state", "animate");
+
+              console.log("src", animate);
+        }
+
+        else {
+
+            var still = $(this).attr("data-still");
+              $(this).attr("src", still);
+              $(this).attr("data-state", "still");
+
+             
+        };
+    });
+
+  });
+
+     };
+
 
 
  

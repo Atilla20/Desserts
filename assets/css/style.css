@@ -89,6 +89,7 @@ body {
 /*<img> styling*/
 
 .gif-image {
+	width:600px;
 	margin-top:20px;
 	margin-left: 230px;
 
